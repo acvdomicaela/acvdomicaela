@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micaela Acevedo — Digital Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0ee;
+  --ink: #1a1a2e;
+  --blue: #5a7fb8;
+  --pink: #d4a0b0;
+  --warm: #e8c4a0;
+  --muted: #b8a9c0;
+  --card: #ede8e4;
+  --border: rgba(90,100,180,0.18);
+  --display: 'Bebas Neue', sans-serif;
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.6;
+  cursor: none;
+}
+
+/* GRID BACKGROUND */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(90,100,180,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,100,180,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.cursor {
+  width: 10px; height: 10px;
+  background: var(--ink); border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: multiply;
+}
+.cursor.h { width: 32px; height: 32px; background: var(--blue); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 48px;
+}
+
+.nav-id {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); line-height: 1.2;
+}
+.nav-id strong { display: block; color: var(--ink); font-weight: 700; letter-spacing: 0.15em; }
+
+.nav-links { display: flex; }
+.nav-link {
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  padding: 0 1rem; height: 48px;
+  display: flex; align-items: center;
+  border-left: 1px solid var(--border);
+  transition: color 0.2s, background 0.2s;
+  font-weight: 500;
+}
+.nav-link:hover, .nav-link.active { color: var(--blue); background: rgba(90,127,184,0.05); }
+
+.nav-num { font-size: 9px; letter-spacing: 0.1em; color: var(--muted); }
+
+/* PAGE WRAPPER */
+.page { position: relative; z-index: 1; padding-top: 48px; }
+
+/* ── HERO ── */
+.hero {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr;
+  grid-template-rows: auto auto;
+  border-bottom: 1px solid var(--border);
+  min-height: 480px;
+}
+
+.hero-sidebar {
+  grid-row: span 2;
+  border-right: 1px solid var(--border);
+  padding: 2rem 1.2rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+
+.hero-tags { display: flex; flex-direction: column; gap: 2px; }
+.h-tag { font-size: 10px; letter-spacing: 0.08em; color: var(--muted); line-height: 2; }
+.h-tag strong { color: var(--blue); font-weight: 700; }
+
+.hero-year-wrap { margin-top: auto; }
+.hero-year {
+  font-family: var(--display);
+  font-size: 100px; line-height: 0.82;
+  color: var(--card); letter-spacing: 0.02em;
+  display: block;
+}
+
+/* Hero top right — big photo + headline */
+.hero-main {
+  grid-column: span 2;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  min-height: 300px;
+}
+
+.hero-photo {
+  background: linear-gradient(160deg,#e8e0ee,#d4c8dc);
+  border-right: 1px solid var(--border);
+  display: flex; align-items: flex-end; justify-content: flex-start;
+  padding: 1rem; overflow: hidden; position: relative;
+}
+/* ─── REEMPLAZÁ: src por tu foto ─── */
+/* <img id="hero-img" src="img/micaela.jpg"> */
+.hero-photo-ph {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(90,100,180,0.35); font-family: var(--sans);
+}
+.hero-photo-cap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: var(--ink); color: var(--bg);
+  padding: 0.3rem 0.7rem;
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+  font-weight: 500;
+}
+
+.hero-headline {
+  padding: 1.5rem 1.5rem 1rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+
+.hero-kicker {
+  font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--blue); font-weight: 700; margin-bottom: 0.5rem;
+}
+
+.hero-h1 {
+  font-family: var(--display);
+  font-size: 64px; line-height: 0.88;
+  letter-spacing: 0.02em; color: var(--ink);
+}
+
+.hero-h1-sub {
+  font-family: var(--serif);
+  font-style: italic; font-weight: 300;
+  font-size: 44px; line-height: 0.9;
+  color: var(--blue); display: block;
+}
+
+.hero-lede {
+  font-size: 12.5px; line-height: 1.75;
+  color: #7a7080; margin-top: 1rem;
+  max-width: 320px;
+}
+
+.accent-bar {
+  height: 2px; width: 140px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--pink), var(--warm));
+  margin-top: 1rem;
+}
+
+.hero-cta {
+  display: flex; gap: 0.7rem; align-items: center; margin-top: 1.2rem;
+}
+
+/* Hero bottom — stat strip */
+.hero-strip {
+  grid-column: span 2;
+  display: grid; grid-template-columns: repeat(4,1fr);
+}
+
+.h-stat {
+  padding: 0.8rem 1rem;
+  border-right: 1px solid var(--border);
+}
+.h-stat:last-child { border-right: none; }
+.h-stat-num {
+  font-family: var(--display);
+  font-size: 32px; line-height: 1; color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.h-stat-lbl {
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); font-weight: 500; margin-top: 2px;
+}
+
+/* BUTTONS */
+.btn {
+  font-family: var(--sans);
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 10px 20px; text-decoration: none;
+  border: 1px solid var(--blue); color: var(--blue); background: none;
+  cursor: none; transition: all 0.2s; font-weight: 700;
+  display: inline-block;
+}
+.btn:hover, .btn.solid { background: var(--blue); color: var(--bg); }
+.btn.ghost { border-color: rgba(90,100,180,0.25); color: var(--muted); }
+.btn.ghost:hover { border-color: var(--blue); color: var(--blue); background: none; }
+
+/* ── SECTIONS ── */
+section { position: relative; }
+
+/* Section header — magazine article style */
+.sec-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  padding: 1.2rem 2rem 0;
+  border-bottom: 1px solid var(--border);
+  gap: 2rem;
+}
+
+.sec-kicker {
+  font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--blue); font-weight: 700; margin-bottom: 0.3rem;
+}
+
+.sec-title {
+  font-family: var(--display);
+  font-size: 52px; line-height: 0.88;
+  letter-spacing: 0.02em; color: var(--ink);
+}
+
+.sec-title-i {
+  font-family: var(--serif);
+  font-style: italic; font-weight: 300;
+  font-size: 36px; color: var(--blue);
+  display: block; line-height: 1;
+}
+
+.sec-num {
+  font-family: var(--display);
+  font-size: 80px; line-height: 0.82;
+  color: var(--card); letter-spacing: 0.02em;
+  align-self: flex-end;
+}
+
+.sec-body { padding: 1.5rem 2rem; }
+
+/* ── WORK — magazine grid ── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+}
+
+.proj {
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden; position: relative;
+  cursor: none; transition: background 0.25s;
+}
+.proj:hover { background: #e5dfd8; }
+.proj:hover .proj-ov { opacity: 1; }
+.proj:hover .proj-img-wrap img { transform: scale(1.04); }
+
+.p1 { grid-column: span 7; grid-row: span 1; }
+.p2 { grid-column: span 5; }
+.p3 { grid-column: span 3; }
+.p4 { grid-column: span 5; }
+.p5 { grid-column: span 4; }
+.p6 { grid-column: span 5; }
+.p7 { grid-column: span 7; }
+
+.proj-img-wrap {
+  overflow: hidden;
+  background: #ddd5d0;
+  height: 200px; position: relative;
+}
+.p1 .proj-img-wrap, .p7 .proj-img-wrap { height: 260px; }
+.p3 .proj-img-wrap { height: 160px; }
+
+/* ─── REEMPLAZÁ cada .proj-placeholder por <img src="img/proyectoN.jpg"> ─── */
+.proj-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; color: rgba(90,100,180,0.3);
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+}
+
+.proj-ov {
+  position: absolute; inset: 0;
+  background: rgba(90,127,184,0.1);
+  border: 2px solid var(--blue);
+  opacity: 0; transition: opacity 0.25s;
+  display: flex; align-items: center; justify-content: center;
+}
+.proj-ov-icon {
+  width: 36px; height: 36px;
+  border: 1px solid var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg);
+  font-size: 14px; color: var(--blue);
+}
+
+.proj-info {
+  padding: 0.65rem 0.8rem;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem;
+}
+.proj-left {}
+.proj-tag {
+  font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--blue); font-weight: 700;
+}
+.proj-title {
+  font-family: var(--serif);
+  font-style: italic; font-size: 14px;
+  color: var(--ink); line-height: 1.2; margin-top: 1px;
+}
+.proj-num {
+  font-family: var(--display);
+  font-size: 22px; color: var(--card); line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── ABOUT ── */
+.about-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  border: 1px solid var(--border);
+}
+
+.about-photo-col {
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+.about-photo {
+  width: 100%; height: 380px;
+  background: linear-gradient(160deg,#e8e0ee,#d4c8dc);
+  display: flex; align-items: center; justify-content: center;
+}
+.about-photo-ph {
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(90,100,180,0.35);
+}
+/* ─── REEMPLAZÁ: <img src="img/micaela.jpg" style="width:100%;height:380px;object-fit:cover"> ─── */
+.about-photo-label {
+  background: var(--ink); color: var(--bg);
+  padding: 0.45rem 0.9rem;
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+  font-weight: 700;
+}
+
+.about-content { padding: 1.5rem 1.8rem; }
+
+.about-name {
+  font-family: var(--display);
+  font-size: 52px; line-height: 0.88; letter-spacing: 0.02em;
+}
+.about-name-i {
+  font-family: var(--serif);
+  font-style: italic; font-weight: 300;
+  font-size: 36px; color: var(--blue); display: block; line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.about-role {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700; margin-bottom: 1.2rem;
+}
+.about-bio {
+  font-size: 13px; line-height: 1.85; color: #7a7080;
+  margin-bottom: 1.5rem; max-width: 500px;
+}
+
+.skills-group { margin-bottom: 1.2rem; }
+.skills-label {
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700; margin-bottom: 0.5rem;
+}
+.pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill {
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid rgba(90,100,180,0.22); padding: 3px 10px;
+  color: #8898b8; font-weight: 500;
+}
+.pill.hi { background: var(--blue); color: var(--bg); border-color: var(--blue); }
+
+/* AI PILLS */
+.ai-pills { gap: 6px; }
+.ai-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid rgba(90,100,180,0.3); padding: 5px 12px;
+  color: var(--blue); font-weight: 700;
+  background: rgba(90,127,184,0.06);
+  transition: all 0.2s; cursor: default;
+  position: relative;
+}
+.ai-pill:hover {
+  background: var(--blue); color: var(--bg);
+  border-color: var(--blue);
+}
+.ai-pill:hover .ai-icon { color: var(--bg); }
+.ai-icon {
+  width: 13px; height: 13px;
+  color: var(--blue); flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+/* ── EXPERIENCE — article strip layout ── */
+.exp-strips { border: 1px solid var(--border); }
+
+.exp-strip {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.exp-strip:last-child { border-bottom: none; }
+
+.exp-period-col {
+  padding: 1rem 1rem;
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.exp-period {
+  font-size: 9px; letter-spacing: 0.1em;
+  background: var(--blue); color: var(--bg);
+  display: inline-block; padding: 2px 8px;
+  font-weight: 700; width: fit-content; margin-bottom: 4px;
+}
+.exp-type {
+  font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700;
+}
+
+.exp-main {
+  padding: 1rem 1.2rem;
+  border-right: 1px solid var(--border);
+}
+.exp-role {
+  font-family: var(--serif);
+  font-style: italic; font-size: 17px; color: var(--ink);
+  margin-bottom: 2px;
+}
+.exp-company {
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue); font-weight: 700;
+}
+
+.exp-desc-col { padding: 1rem 1.2rem; }
+.exp-desc { font-size: 11.5px; color: #9a8fa0; line-height: 1.65; }
+
+/* Education side by side */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border: 1px solid var(--border);
+  margin-top: 0;
+}
+.edu-card {
+  padding: 1rem 1.2rem;
+  border-right: 1px solid var(--border);
+}
+.edu-card:last-child { border-right: none; }
+.edu-period { background: var(--ink); color: var(--blue); font-size: 9px; letter-spacing: 0.1em; padding: 2px 8px; display: inline-block; margin-bottom: 4px; font-weight: 700; }
+.edu-title {
+  font-family: var(--serif);
+  font-style: italic; font-size: 15px; color: var(--ink); line-height: 1.3;
+}
+.edu-inst { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 2px; font-weight: 500; }
+
+/* ── CONTACT ── */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border);
+}
+.contact-left { padding: 1.5rem 1.8rem; border-right: 1px solid var(--border); }
+.contact-right { padding: 1.5rem 1.8rem; }
+
+.contact-h {
+  font-family: var(--display);
+  font-size: 64px; line-height: 0.88; letter-spacing: 0.02em;
+}
+.contact-h-i {
+  font-family: var(--serif);
+  font-style: italic; font-weight: 300;
+  font-size: 48px; color: var(--blue); display: block; line-height: 0.95;
+}
+.contact-sub {
+  font-size: 12px; color: var(--muted); letter-spacing: 0.06em;
+  margin: 1rem 0 1.5rem; line-height: 1.7; max-width: 280px;
+}
+
+.c-link {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+  text-decoration: none; transition: padding-left 0.2s;
+}
+.c-link:first-of-type { border-top: 1px solid var(--border); }
+.c-link:hover { padding-left: 8px; }
+.c-link-lbl {
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); width: 68px; font-weight: 700;
+}
+.c-link-val {
+  font-family: var(--serif);
+  font-style: italic; font-size: 15px; color: var(--ink); flex: 1;
+}
+.c-arrow { font-size: 13px; color: var(--blue); }
+
+.f-label {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); display: block; margin-bottom: 5px; font-weight: 700;
+}
+.f-field { margin-bottom: 1rem; }
+.f-input {
+  width: 100%; background: transparent;
+  border: none; border-bottom: 1px solid rgba(90,100,180,0.2);
+  color: var(--ink); font-family: var(--sans); font-size: 12px;
+  padding: 8px 0; outline: none; transition: border-color 0.2s;
+}
+.f-input:focus { border-bottom-color: var(--blue); }
+.f-input::placeholder { color: #c8b8c0; }
+textarea.f-input { resize: vertical; min-height: 80px; }
+.f-submit {
+  font-family: var(--sans);
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  background: var(--blue); color: var(--bg);
+  border: none; padding: 12px 24px; cursor: none;
+  transition: opacity 0.2s; width: 100%; font-weight: 700;
+}
+.f-submit:hover { opacity: 0.85; }
+
+/* ── FOOTER ── */
+footer {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-top: 1px solid var(--border);
+  position: relative; z-index: 1;
+}
+.f-left, .f-right {
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); font-weight: 500;
+}
+.f-right { text-align: right; }
+.f-center {
+  font-family: var(--display);
+  font-size: 18px; letter-spacing: 0.1em; color: var(--card);
+  text-align: center;
+}
+
+/* ── TICKER ── */
+.ticker-wrap {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--ink); overflow: hidden;
+  white-space: nowrap; padding: 0.5rem 0;
+}
+.ticker {
+  display: inline-block;
+  animation: ticker 18s linear infinite;
+  font-family: var(--display);
+  font-size: 18px; letter-spacing: 0.12em; color: var(--bg);
+}
+.ticker span { margin: 0 2rem; color: var(--blue); }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-sidebar { display: none; }
+  .hero-main { grid-template-columns: 1fr; grid-column: 1; }
+  .hero-strip { grid-column: 1; grid-template-columns: repeat(2,1fr); }
+  .work-grid { grid-template-columns: 1fr 1fr; }
+  .p1,.p2,.p3,.p4,.p5,.p6,.p7 { grid-column: span 2; }
+  .about-layout, .contact-layout { grid-template-columns: 1fr; }
+  .exp-strip { grid-template-columns: 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-id">
+    MICAELA ACEVEDO<br>
+    <strong>Digital Designer · BsAs</strong>
+  </div>
+  <div class="nav-links">
+    <a href="#work" class="nav-link">Trabajo</a>
+    <a href="#about" class="nav-link">Sobre mí</a>
+    <a href="#experiencia" class="nav-link">Experiencia</a>
+    <a href="#contact" class="nav-link">Contacto</a>
+  </div>
+  <span class="nav-num">2025 — 01</span>
+</nav>
+
+<div class="page">
+
+<!-- ── HERO ── -->
+<div class="hero" id="hero">
+
+  <div class="hero-sidebar">
+    <div class="hero-tags">
+      <span class="h-tag"><strong>#</strong>Branding &amp; Visual Identity</span>
+      <span class="h-tag"><strong>#</strong>Paid Media &amp; Social Ads</span>
+      <span class="h-tag"><strong>#</strong>Motion &amp; Video</span>
+      <span class="h-tag"><strong>#</strong>Audiovisual Content</span>
+      <span class="h-tag"><strong>#</strong>Digital Design</span>
+      <span class="h-tag"><strong>#</strong>Art Direction</span>
+    </div>
+    <div class="hero-year-wrap">
+      <span class="hero-year">20<br>25</span>
+    </div>
+  </div>
+
+  <div class="hero-main">
+    <div class="hero-photo">
+      <!--
+        REEMPLAZÁ ESTO por tu foto:
+        <img src="img/micaela.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top">
+      -->
+      <div class="hero-photo-ph">tu foto acá</div>
+      <div class="hero-photo-cap">Micaela Acevedo · Buenos Aires, ARG</div>
+    </div>
+
+    <div class="hero-headline">
+      <div>
+        <p class="hero-kicker">Portfolio — Diseño Digital &amp; Arte</p>
+        <h1 class="hero-h1">
+          MICAELA
+          <span class="hero-h1-sub">Acevedo</span>
+        </h1>
+        <p class="hero-lede">
+          Diseñadora gráfica con 4+ años en agencias. Branding, motion, paid media y IA generativa aplicada al diseño — todo para que tu marca comunique mejor.
+        </p>
+        <div class="accent-bar"></div>
+      </div>
+      <div class="hero-cta">
+        <a href="#work" class="btn solid">Ver trabajo</a>
+        <a href="#contact" class="btn ghost">Hablemos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-strip">
+    <div class="h-stat">
+      <div class="h-stat-num">4+</div>
+      <div class="h-stat-lbl">Años de exp.</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-num">3</div>
+      <div class="h-stat-lbl">Agencias</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-num">ES · EN</div>
+      <div class="h-stat-lbl">Idiomas</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-num">UdeSal</div>
+      <div class="h-stat-lbl">Docente</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    BRANDING <span>✦</span> PAID MEDIA <span>✦</span> MOTION &amp; VIDEO <span>✦</span> VISUAL IDENTITY <span>✦</span> ART DIRECTION <span>✦</span> CHATGPT <span>✦</span> CLAUDE <span>✦</span> GEMINI <span>✦</span> FLOW <span>✦</span> MIDJOURNEY <span>✦</span> SOCIAL ADS <span>✦</span> DIGITAL DESIGN <span>✦</span> BRANDING <span>✦</span> PAID MEDIA <span>✦</span> MOTION &amp; VIDEO <span>✦</span> VISUAL IDENTITY <span>✦</span> ART DIRECTION <span>✦</span> CHATGPT <span>✦</span> CLAUDE <span>✦</span> GEMINI <span>✦</span> FLOW <span>✦</span> MIDJOURNEY <span>✦</span> SOCIAL ADS <span>✦</span> DIGITAL DESIGN <span>✦</span>
+  </div>
+</div>
+
+<!-- ── WORK ── -->
+<section id="work">
+  <div class="sec-header">
+    <div>
+      <p class="sec-kicker">Proyectos seleccionados — 2021/2025</p>
+      <h2 class="sec-title">EL TRABAJO<span class="sec-title-i">habla solo.</span></h2>
+    </div>
+    <div class="sec-num">01</div>
+  </div>
+  <div class="sec-body">
+    <!--
+    ════════════════════════════════════════════════
+    CÓMO AGREGAR IMÁGENES:
+    1. Creá carpeta "img/" junto al HTML
+    2. Reemplazá cada .proj-placeholder por:
+       <img src="img/NombreArchivo.jpg" style="width:100%;height:100%;object-fit:cover">
+    3. Para videos:
+       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover">
+         <source src="img/video.mp4" type="video/mp4">
+       </video>
+    ════════════════════════════════════════════════
+    -->
+    <div class="work-grid reveal">
+
+      <div class="proj p1">
+        <div class="proj-img-wrap">
+          <div class="proj-placeholder">imagen proyecto 1</div>
+          <div class="proj-ov"><div class="proj-ov-icon">↗</div></div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-left">
+            <div class="proj-tag">Branding</div>
+            <div class="proj-title">Identidad Visual — [Nombre del proyecto]</div>
+          </div>
+          <div class="proj-num">01</div>
+        </div>
+      </div>
+
+      <div class="proj p2">
+        <div class="proj-img-wrap">
+          <div class="proj-placeholder">imagen proyecto 2</div>
+          <div class="proj-ov"><div class="proj-ov-icon">↗</div></div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-left">
+            <div class="proj-tag">Paid Media</div>
+            <div class="proj-title">Campaña Ads — [Nombre del proyecto]</div>
+          </div>
+          <div class="proj-num">02</div>
+        </div>
+      </div>
+
+      <div class="proj p3">
+        <div class="proj-img-wrap">
+          <div class="proj-placeholder">video 3</div>
+          <div class="proj-ov"><div class="proj-ov-icon">↗</div></div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-left">
+            <div class="proj-tag">Motion &amp; Video</div>
+            <div class="proj-title">Animación — [Nombre]</div>
+          </div>
+          <div class="proj-num">03</div>
+        </div>
+      </div>
+
+      <div class="proj p4">
+        <div class="proj-img-wrap">
+          <div class="proj-placeholder">imagen proyecto 4</div>
+          <div class="proj-ov"><div class="proj-ov-icon">↗</div></div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-left">
+            <div class="proj-tag">Social Media</div>
+            <div class="proj-title">Contenido Digital — [Nombre del proyecto]</div>
+          </div>
+          <div class="proj-num">04</div>
+        </div>
+      </div>
+
+      <div class="proj p5">
+        <div class="proj-img-wrap">
+          <div class="proj-placeholder">imagen 5</div>
+          <div class="proj-ov"><div class="proj-ov-icon">↗</div></div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-left">
+            <div class="proj-tag">Arte Digital</div>
+            <div class="proj-title">Experimental — [Nombre]</div>
+          </div>
+          <div class="proj-num">05</div>
+        </div>
+      </div>
+
+      <div class="proj p6">
+        <div class="proj-img-wrap">
+          <div class="proj-placeholder">video / motion 6</div>
+          <div class="proj-ov"><div class="proj-ov-icon">↗</div></div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-left">
+            <div class="proj-tag">Audiovisual</div>
+            <div class="proj-title">Producción — [Nombre del proyecto]</div>
+          </div>
+          <div class="proj-num">06</div>
+        </div>
+      </div>
+
+      <div class="proj p7">
+        <div class="proj-img-wrap">
+          <div class="proj-placeholder">imagen proyecto 7</div>
+          <div class="proj-ov"><div class="proj-ov-icon">↗</div></div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-left">
+            <div class="proj-tag">Branding</div>
+            <div class="proj-title">Rediseño de Marca — [Nombre del proyecto]</div>
+          </div>
+          <div class="proj-num">07</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="sec-header">
+    <div>
+      <p class="sec-kicker">Sobre mí — Diseñadora &amp; Docente</p>
+      <h2 class="sec-title">QUIEN<span class="sec-title-i">soy.</span></h2>
+    </div>
+    <div class="sec-num">02</div>
+  </div>
+  <div class="sec-body">
+    <div class="about-layout reveal">
+      <div class="about-photo-col">
+        <!--
+          REEMPLAZÁ ESTO por tu foto:
+          <img src="img/micaela.jpg" style="width:100%;height:380px;object-fit:cover;object-position:top;display:block">
+        -->
+        <div class="about-photo">
+          <span class="about-photo-ph">tu foto acá</span>
+        </div>
+        <div class="about-photo-label">Micaela Acevedo · BA, ARG</div>
+      </div>
+      <div class="about-content">
+        <h2 class="about-name">MICAELA<span class="about-name-i">Acevedo</span></h2>
+        <p class="about-role">Digital &amp; Graphic Designer · Docente Universitaria · Buenos Aires</p>
+        <p class="about-bio">
+          Diseñadora gráfica con más de 4 años de experiencia en agencias y equipos in-house, especializada en branding, identidades visuales y contenido digital estratégico — desde campañas publicitarias hasta piezas de comunicación de marca que generan impacto real.<br><br>
+          Trabajo en edición de video y motion graphics para dar vida a marcas en formato audiovisual, y me desempeño como docente en la Licenciatura en Arte y Diseño Digital de la Universidad del Salvador. Actualmente en formación con una Maestría en la Universidad Nacional de Quilmes.<br><br>
+          Soy curiosa por naturaleza y proactiva por elección: siempre explorando nuevas herramientas, tendencias y formas de comunicar visualmente. Incluyendo IA generativa — que integro a mi flujo de trabajo para crear más rápido, mejor y con más intención.
+        </p>
+        <div class="skills-group">
+          <p class="skills-label">Diseño &amp; Producción</p>
+          <div class="pills">
+            <span class="pill hi">Adobe Creative Suite</span>
+            <span class="pill hi">After Effects</span>
+            <span class="pill hi">Premiere Pro</span>
+            <span class="pill hi">Figma</span>
+            <span class="pill">Canva</span>
+            <span class="pill">CapCut</span>
+            <span class="pill">HTML · CSS · JS</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <p class="skills-label">IA Generativa</p>
+          <div class="pills ai-pills">
+            <span class="pill ai-pill" data-tool="chatgpt">
+              <svg class="ai-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.032.067L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z" fill="currentColor"/></svg>
+              ChatGPT
+            </span>
+            <span class="pill ai-pill" data-tool="claude">
+              <svg class="ai-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.304 1.273c-1.099-.292-2.23.37-2.522 1.47l-3.797 14.31a1.954 1.954 0 0 0 1.47 2.367c1.1.292 2.23-.37 2.522-1.47L18.774 3.64a1.953 1.953 0 0 0-1.47-2.366zm-8.626 0c-1.1-.292-2.23.37-2.522 1.47L2.359 17.053a1.954 1.954 0 0 0 1.47 2.367c1.1.292 2.23-.37 2.522-1.47L10.147 3.64a1.953 1.953 0 0 0-1.47-2.366z" fill="currentColor"/><path d="M22.727 8.696c-.292-1.099-1.423-1.761-2.522-1.47l-14.31 3.798a1.954 1.954 0 0 0-1.47 2.367c.292 1.099 1.423 1.762 2.522 1.47l14.31-3.798a1.953 1.953 0 0 0 1.47-2.367z" fill="currentColor"/></svg>
+              Claude
+            </span>
+            <span class="pill ai-pill" data-tool="gemini">
+              <svg class="ai-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 24A14.304 14.304 0 0 0 0 12 14.304 14.304 0 0 0 12 0a14.305 14.305 0 0 0 12 12 14.305 14.305 0 0 0-12 12z" fill="currentColor"/></svg>
+              Gemini
+            </span>
+            <span class="pill ai-pill" data-tool="flow">
+              <svg class="ai-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor" opacity=".4"/><path d="M12 6v2.5M12 15.5V18M6 12H8.5M15.5 12H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Flow
+            </span>
+            <span class="pill ai-pill" data-tool="midjourney">
+              <svg class="ai-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 17.5L7.5 7l3 7 2-4 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="7" r="2" fill="currentColor" opacity=".5"/></svg>
+              Midjourney
+            </span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <p class="skills-label">Especialidades</p>
+          <div class="pills">
+            <span class="pill">Identidad Visual</span>
+            <span class="pill">Paid Media</span>
+            <span class="pill">Motion &amp; Animación</span>
+            <span class="pill">Social Media Design</span>
+            <span class="pill">Brand Guidelines</span>
+            <span class="pill">UI/UX</span>
+            <span class="pill">Dirección de Arte</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.8rem;margin-top:1.2rem">
+          <a href="https://www.behance.net/micaelaacevedo1" target="_blank" class="btn solid">Ver Behance</a>
+          <a href="#contact" class="btn ghost">Contactarme</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experiencia">
+  <div class="sec-header">
+    <div>
+      <p class="sec-kicker">Trayectoria — Profesional &amp; Académica</p>
+      <h2 class="sec-title">EXPERIENCIA<span class="sec-title-i">&amp; formación.</span></h2>
+    </div>
+    <div class="sec-num">03</div>
+  </div>
+  <div class="sec-body">
+    <div class="exp-strips reveal">
+
+      <div class="exp-strip">
+        <div class="exp-period-col">
+          <span class="exp-period">2022 — HOY</span>
+          <span class="exp-type">Trabajo</span>
+        </div>
+        <div class="exp-main">
+          <p class="exp-role">Senior Graphic Designer</p>
+          <p class="exp-company">Agencia BDP · Buenos Aires</p>
+        </div>
+        <div class="exp-desc-col">
+          <p class="exp-desc">Diseño integral de assets para marketing digital — paid media, presentaciones, social media y web, incluyendo contenido audiovisual y edición de video.</p>
+        </div>
+      </div>
+
+      <div class="exp-strip">
+        <div class="exp-period-col">
+          <span class="exp-period">2023 — HOY</span>
+          <span class="exp-type">Docencia</span>
+        </div>
+        <div class="exp-main">
+          <p class="exp-role">Docente Universitaria</p>
+          <p class="exp-company">Universidad del Salvador</p>
+        </div>
+        <div class="exp-desc-col">
+          <p class="exp-desc">Profesora adjunta en la Lic. en Arte y Diseño Digital. Materias: Programación Audiovisual I &amp; II, Diseño de Videojuegos I &amp; II, Tecnología I &amp; II.</p>
+        </div>
+      </div>
+
+      <div class="exp-strip">
+        <div class="exp-period-col">
+          <span class="exp-period">2021 — 2023</span>
+          <span class="exp-type">Trabajo</span>
+        </div>
+        <div class="exp-main">
+          <p class="exp-role">Graphic Designer</p>
+          <p class="exp-company">IASA ONG · Buenos Aires</p>
+        </div>
+        <div class="exp-desc-col">
+          <p class="exp-desc">Assets visuales para redes, comunicación institucional, infografías, brand guidelines y contenido audiovisual.</p>
+        </div>
+      </div>
+
+      <div class="exp-strip">
+        <div class="exp-period-col">
+          <span class="exp-period">2020 — 2022</span>
+          <span class="exp-type">Trabajo</span>
+        </div>
+        <div class="exp-main">
+          <p class="exp-role">Graphic Designer</p>
+          <p class="exp-company">Refugio SFA · Buenos Aires</p>
+        </div>
+        <div class="exp-desc-col">
+          <p class="exp-desc">Diseño de contenido visual para redes sociales, infografías y producción audiovisual.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="edu-grid reveal" style="margin-top:6px;border-top:none;">
+      <div class="edu-card">
+        <span class="edu-period">2025 — Cursando</span>
+        <p class="edu-title">Maestría</p>
+        <p class="edu-inst">Universidad Nacional de Quilmes</p>
+      </div>
+      <div class="edu-card">
+        <span class="edu-period">2021</span>
+        <p class="edu-title">Lic. en Arte y Diseño Digital</p>
+        <p class="edu-inst">Universidad del Salvador</p>
+      </div>
+      <div class="edu-card">
+        <span class="edu-period">2023 · 2025</span>
+        <p class="edu-title">UI/UX Intro · Coder Camp IA</p>
+        <p class="edu-inst">Coderhouse</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="sec-header">
+    <div>
+      <p class="sec-kicker">Contacto — Proyectos &amp; Colaboraciones</p>
+      <h2 class="sec-title">HABLEMOS<span class="sec-title-i">juntas.</span></h2>
+    </div>
+    <div class="sec-num">04</div>
+  </div>
+  <div class="sec-body">
+    <div class="contact-layout reveal">
+      <div class="contact-left">
+        <p class="contact-sub">Branding, campañas digitales, motion, contenido audiovisual o colaboraciones creativas — escribime.</p>
+        <a href="mailto:acvdomicaela@gmail.com" class="c-link">
+          <span class="c-link-lbl">Email</span>
+          <span class="c-link-val">acvdomicaela@gmail.com</span>
+          <span class="c-arrow">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/acvdomicaela/" target="_blank" class="c-link">
+          <span class="c-link-lbl">LinkedIn</span>
+          <span class="c-link-val">acvdomicaela</span>
+          <span class="c-arrow">↗</span>
+        </a>
+        <a href="https://www.behance.net/micaelaacevedo1" target="_blank" class="c-link">
+          <span class="c-link-lbl">Behance</span>
+          <span class="c-link-val">micaelaacevedo</span>
+          <span class="c-arrow">↗</span>
+        </a>
+      </div>
+      <div class="contact-right">
+        <div class="f-field"><label class="f-label">Nombre</label><input class="f-input" type="text" placeholder="¿Cómo te llamás?"></div>
+        <div class="f-field"><label class="f-label">Email</label><input class="f-input" type="email" placeholder="tu@email.com"></div>
+        <div class="f-field"><label class="f-label">Proyecto</label><textarea class="f-input" placeholder="Contame en qué estás trabajando..."></textarea></div>
+        <button class="f-submit">Enviar mensaje →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-left">© 2025 Micaela Acevedo</span>
+  <span class="f-center">MA.</span>
+  <span class="f-right">Buenos Aires · Digital Designer</span>
+</footer>
+
+</div><!-- /page -->
+
+<script>
+// Cursor
+const cur = document.getElementById('cur');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.proj').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('h'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('h'));
+});
+
+// Scroll reveal
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// Active nav
+const secs = document.querySelectorAll('section[id], div[id]');
+const nls = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  let cur2 = '';
+  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 70) cur2 = s.id; });
+  nls.forEach(l => {
+    l.classList.remove('active');
+    if(l.getAttribute('href') === '#' + cur2) l.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
