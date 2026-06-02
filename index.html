@@ -273,6 +273,11 @@ section { position: relative; }
   overflow: hidden; position: relative;
   cursor: none; transition: background 0.25s;
 }
+  a.proj {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
 .proj:hover { background: #e5dfd8; }
 .proj:hover .proj-ov { opacity: 1; }
 .proj:hover .proj-img-wrap img { transform: scale(1.04); }
@@ -718,19 +723,19 @@ footer {
     -->
     <div class="work-grid reveal">
 
-      <div class="proj p1">
-        <div class="proj-img-wrap">
-          <div class="proj-placeholder">imagen proyecto 1</div>
-          <div class="proj-ov"><div class="proj-ov-icon">↗</div></div>
-        </div>
-        <div class="proj-info">
-          <div class="proj-left">
-            <div class="proj-tag">Branding</div>
-            <div class="proj-title">Identidad Visual — [Nombre del proyecto]</div>
-          </div>
-          <div class="proj-num">01</div>
-        </div>
+  <a href="campari-academy.html" class="proj p1">
+    <div class="proj-img-wrap">
+      <div class="proj-placeholder">imagen proyecto 1</div>
+      <div class="proj-ov"><div class="proj-ov-icon">↗</div></div>
+    </div>
+      <div class="proj-info">
+      <div class="proj-left">
+        <div class="proj-tag">Branding</div>
+        <div class="proj-title">Identidad Visual — [Nombre del proyecto]</div>
       </div>
+    <div class="proj-num">01</div>
+    </div>
+  </a>
 
       <div class="proj p2">
         <div class="proj-img-wrap">
